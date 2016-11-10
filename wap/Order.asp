@@ -1,0 +1,165 @@
+<!--#Include file="Head.asp"-->
+<%
+Dim Action:Action=request("Action")
+%>
+
+<%
+Function addurl(lurl)   
+domext = "com,net,org,cn,la,cc,info,hk,biz,memo,bin,am,etv,asi,ak,rde,org.cn,co.kr,com.cn,net.cn,gov.cn,com.hk" 
+arrdom = Split(domext, ",")  
+addurl = "": lurl = LCase(lurl)  
+If lurl = "" Or Len(lurl) = 0 Then Exit Function 
+lurl = Replace(Replace(lurl, "http://", ""), "https://", "")  
+ds1 = InStr(lurl, ":") - 1 '过滤掉端口  
+If ds1 < 0 Then ds1 = InStr(lurl, "/") - 1 '过滤掉/后面的字符  
+If ds1 > 0 Then lurl = Left(lurl, ds1)  
+ds2 = Split(lurl, ".")(UBound(Split(lurl, ".")))  
+If InStr(domext, ds2) = 0 Then 
+    addurl = lurl  
+Else 
+    For dd = 0 To UBound(arrdom)  
+        If InStr(lurl, "." & arrdom(dd)) > 0 Then 
+            addurl = Replace(lurl, "." & arrdom(dd) & "", "")  
+            If InStr(addurl, ".") = 0 Then 
+            addurl = lurl  
+            Else 
+            addurl = Split(addurl, ".")(UBound(Split(addurl, "."))) & "." & arrdom(dd)  
+            End If 
+        End If 
+    Next 
+End If 
+End Function
+
+if Action <> 0 then
+
+Dim advlink,userip,advlinks,lailuy,lailu,hostlailu,lurl,flurl
+userip = Request.ServerVariables("HTTP_X_FORWARDED_FOR") 
+If userip = "" Then
+	userip = Request.ServerVariables("REMOTE_ADDR") 
+end if
+
+lailuy = Request.ServerVariables("HTTP_REFERER")
+If InStr(lailuy,"?") >0 Then
+	lailu = Split(lailuy,"?")(0)
+else
+	lailu = lailuy
+end if
+lurl = lailu
+flurl = addurl(lurl)
+if flurl = "baidu.com" then
+	advlink = "www.baidu.com"
+elseif flurl = "sogou.com" then
+	advlink = "www.sogou.com"
+elseif flurl = "haosou.com" then
+	advlink = "www.haosou.com"
+elseif flurl = "soso.com" then
+	advlink = "www.soso.com"
+elseif flurl = "sm.cn" then
+	advlink = "m.sm.cn"
+else
+	advlink = lailu
+end if
+
+if lailuy = "" then
+	hostlailu = request.ServerVariables("HTTP_HOST")
+If InStr(hostlailu,"?") >0 Then
+	advlink = Split(hostlailu,"?")(0)
+else
+	advlink = hostlailu
+end if
+end if
+
+Dim kefupost,krfuip
+kefuip="112.195.133.10"
+if userip = kefuip then
+kefupost=trim(SafeRequest("Sh_Name","post"))
+Response.Cookies("advlink") = 0
+if Instr(kefupost,"i") <> 0 or Instr(kefupost,"I") <> 0 then
+	userip = "112.195.133.11"
+	advlink = "http://www.hanfangyanyi.com/i"
+elseif Instr(kefupost,"z") <> 0 or Instr(kefupost,"Z") <> 0 then
+	userip = "112.195.133.12"
+	advlink = "http://www.hanfangyanyi.com/z"
+elseif Instr(kefupost,"m") <> 0 or Instr(kefupost,"M") <> 0 then
+	userip = "112.195.133.13"
+	advlink = "http://www.hanfangyanyi.com/m"
+elseif Instr(kefupost,"f") <> 0 or Instr(kefupost,"F") <> 0 then
+	userip = "112.195.133.14"
+	advlink = "http://www.hanfangyanyi.com/f"
+elseif Instr(kefupost,"e") <> 0 or Instr(kefupost,"E") <> 0 then
+	userip = "112.195.133.15"
+	advlink = "http://www.hanfangyanyi.com/e"
+elseif Instr(kefupost,"d") <> 0 or Instr(kefupost,"D") <> 0 then
+	userip = "112.195.133.16"
+	advlink = "http://www.hanfangyanyi.com/d"
+elseif Instr(kefupost,"s") <> 0 or Instr(kefupost,"S") <> 0 then
+	userip = "112.195.133.17"
+	advlink = "http://www.hanfangyanyi.com/s"
+end if
+end if
+
+'lailu = Request.ServerVariables("HTTP_REFERER")	
+
+'session("advlink")=lailu
+
+'advlink = session("advlink")
+
+'if advlink = "" then
+'	advlink = request.ServerVariables("HTTP_HOST")
+'end if
+
+dim strs:strs=split(advlink,"/")(2)
+if request.Cookies("advlink") = 0 then
+ dim asql,ars
+ set ars=server.CreateObject("adodb.recordset")
+ asql="select * from NwebCn_Ads_effect where ADS_Link = '"&advlink&"'"
+ ars.open asql,conn,1,3
+ if not ars.eof then
+     ars("ipcount") = ars("ipcount") + 1
+	 ars.update
+	 Response.Cookies("advlink") = ars("Id")
+	 conn.execute("insert into NwebCn_Ip (adv_id,ip,addtime) Values("&ars("Id")&",'"&userip&"','"&now&"')")
+	 else
+	  ars.close
+	  asql="select * from NwebCn_Ads_effect where ADS_Link = '"&strs&"'"
+	  ars.open asql,conn,1,3
+	  if not ars.eof then
+	    ars("ipcount") = ars("ipcount") + 1
+	    ars.update
+	    Response.Cookies("advlink") = ars("Id")
+		conn.execute("insert into NwebCn_Ip (adv_id,ip,addtime) Values("&ars("Id")&",'"&userip&"','"&now&"')")
+	  else
+	    Response.Cookies("advlink") = 0
+	  end if
+ end if
+ ars.close
+ set rs=nothing
+end if
+
+end if
+%>
+	</div>
+    <div class="topad1"></div>
+<SCRIPT src="style/js/submit.js" type="text/javascript"></SCRIPT>
+  <div id="main">
+    <div class="html">
+     <div id="dingou" name="dingou" class="listrightb">
+                      <%if Action="Left" then%>
+                        <!--#include file="info/RequestLeft.asp"-->
+                      <%else%>
+                          <!--#include file="info/zxdg_left.asp"-->
+
+			<%if Action="" then%>
+			<%if GetValues("NwebCn_About","Content",61) <> "" then%>
+			<div class="oderpay">
+			<p style="text-align:center;"><span>注意：关于货到付款的问题 ！！</span></p><p>　　（全国各地）货到付款：收到货时再付款，确保安全无任何风险！！！我们现在已经委托邮政EMS快递为我们开展代收货款业务，所以目前全国任何地区（包括乡镇，但是乡镇的到货时间要稍微延长）都可以货到付款（注：乡镇只能到镇中心区域，如果收货地在“镇”以下“村、社”一级的朋友请到所属镇中心邮政所取货，货到后邮局会电话通知）。</p>
+			</div>
+			<%end if%>
+			<%end if%>
+			</div>
+                      <%End if%>
+       </div>
+     </div>
+  </div>
+  </div>
+<!--#Include file="Order_Foot.asp"-->

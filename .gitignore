@@ -1,0 +1,12 @@
+# ignore these files 
+
+# magento data folders
+media/*
+dbdata/*
+include/*
+ip/*
+jzm/*
+Upload/*
+www###beloj###com###database/*
+shengfa.zip
+生发网站手机版切片.rar

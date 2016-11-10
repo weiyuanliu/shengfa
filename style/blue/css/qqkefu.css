@@ -1,0 +1,20 @@
+.box_os .os_x, .ico_os, .ico_gt, .ico_pp, .osqq .qq,.box_os .osqq p em,.acbox{ background:url(img/qqkf.gif) no-repeat;}
+.box_os{ height:auto; overflow:hidden; width:128px; position:fixed; right:0; top:44px; _position:absolute; z-index:9999;text-align:center;display:none; }
+.box_os .os_x{ width:129px; background-color:#fff; background-position:-50px 0px; clear:both; height:35px; text-align:center;cursor:pointer;}
+.box_os .osqq{background:#f6fcfe;overflow:hidden;}
+.box_os .osqq p{ height:auto; line-height:26px;width:128px;}
+.box_os .osqq .bmname{ padding-top:5px;}
+.box_os .osqq p strong{ color:#626666;font-size: 12px;}
+.box_os .osqq img{ margin:2px 0 3px 0; clear:both;}
+.box_os .osqq p em{ font-style:normal; color:#666; display:block; background-position:-50px -43px;height:24px;width:115px;margin:0 auto;line-height:24px;font-size: 13px;font-weight: bold;overflow:hidden;}
+.box_os .osqq p em.openbg{ background-position:-50px -71px;}
+.box_os .osqq p span{ color:#3336E3; display:block; line-height:16px;}
+.box_os .osqq p a{color:#3336E3; font-size:14px;}
+.acbox{ width:128px; overflow:hidden;background-position:-50px -108px;height:35px; color: #FFFFFF;font-size: 12px;line-height: 35px;text-align: center;cursor:pointer;}
+.acbox a{color:#fff;}
+.acbox .ico_gt{ background-position:-60px 0; border:1px solid #299ec0; border-top:0; cursor:pointer; width:60px; height:33px; float:right;}
+.acbox .ico_pp{ background-position:-60px -60px; border:1px solid #81b140; border-top:0; cursor:pointer; width:60px; height:33px; float:right; margin:0 2px;}
+.onlineService{ background:none; width:39px; *width:84px; height:178px; ;position:fixed; right:0; top:44px; _position:absolute;z-index:9999;}
+.onlineService .ico_os{ background-position:0px 0px; cursor:pointer; width:40px; height:143px; float:right;}
+.onlineService .ico_gt{ background-position:right 0; border:1px solid #299ec0; cursor:pointer; width:39px; height:37px; float:right; clear:both;}
+.onlineService .ico_pp{ background-position:right -60px; border:1px solid #81b140; cursor:pointer; width:39px; height:37px; float:right; margin:0 0 1px 0; clear:both;}

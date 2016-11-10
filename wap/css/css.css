@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* CSS Document */
+body{ background-color:#ECECEC; margin:0 auto; padding:0px; font-size:1em; font-family:"Helvetica Neue", Helvetica, STHeiTi, sans-serif; color:#333;}
+.body{max-width:500px;}
+div{margin: 0px;padding:0px;}
+ul{margin: 0px;padding:0px;}
+li{margin: 0px;padding:0px;LIST-STYLE-TYPE: none}
+html {-webkit-text-size-adjust: 100%;-ms-text-size-adjust:100%;}
+html,div,dl,dt,dd,ul,ol,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,blockquote,th,td,em,button,iframe,p{margin:0px;padding:0px;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+img {border:0px}
+.body img {width:100%;-ms-interpolation-mode: bicubic;}
+sup{font-size:10px;}
+del{ font-family:georgia}
+select,input,textarea{font-family:"Microsoft YaHei",微软雅黑,Arial, Helvetica, sans-serif;}
+
+
+p{ text-indent:0em;}
+
+.body {margin:0px auto; text-align:center;background-color:#ECECEC;}
+.body1{margin:0px auto;}

@@ -1,0 +1,157 @@
+﻿@charset "utf-8";
+/* CSS Document */
+BODY{
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	margin: 0px;
+	padding: 0px;
+	background-color: #288E13;
+	background-image: url(../images/kuangback_01.gif);
+	background-repeat: repeat-y;
+	background-position: center center;
+}
+.ALL {
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+	overflow:hidden;
+
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: auto;
+}
+
+.TOP {
+	background-image: url(../images/kuangback_02.gif);
+	background-repeat: repeat-x;
+	height: 35px;
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.TOP_ONE {
+	float: left;
+	height: 35px;
+	width: 250px;
+	background-image: url(../images/kuangback_03.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.TOP_TWO {
+	float: right;
+	height: 35px;
+	width: 750px;
+}
+.TOP_TWO a {
+	line-height: 35px;
+	text-align: center;
+	height: 35px;
+	width: 75px;
+	display: block;
+	float: left;
+	color: #5A5A5A;
+	text-decoration: none;
+}
+.CENTER {
+	height: auto;
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+	overflow:hidden;
+	margin-top: 40px;
+}
+.CENTER_LEFT {
+	float: left;
+	height: 750px;
+	width: 265px;
+	background-image: url(../images/x2.gif);
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.CENTER_RIGHT {
+	float: left;
+	height: auto;
+	width: 730px;
+}
+.RIGHT_ONE {
+	height: 120px;
+	width: 100%;
+	background-image: url(../images/kuangback_04.gif);
+	background-repeat: no-repeat;
+	background-position: 30px center;
+}
+.RIGHT_TWO {
+	background-image: url(../images/kuangback_05.gif);
+	background-repeat: no-repeat;
+	background-position: center top;
+	height: 81px;
+	width: 659px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.RIGHT_THREE {
+	height: auto;
+	width: 659px;
+	margin-right: auto;
+	margin-left: auto;
+	background-image: url(../images/kuangback_06.gif);
+	background-repeat: repeat-y;
+	background-position: center center;
+}
+.RIGHT_THREE p {
+	width: 88%;
+	margin-right: auto;
+	margin-left: auto;
+	line-height: 27px;
+	padding: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	color: #000;
+	text-indent: 30px;
+}
+.RIGHT_FOUR {
+	height: 158px;
+	width: 659px;
+	margin-right: auto;
+	margin-left: auto;
+	background-image: url(../images/kuangback_07.gif);
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+.FOUNR_RIGHT {
+	float: right;
+	height: 190px;
+	width: 400px;
+	margin-right: 30px;
+	background-image: url(../images/kuangback_09.gif);
+	background-repeat: no-repeat;
+	background-position: right 50px;
+}
+.FOUNR_RIGHT p {
+	margin: 0px;
+	padding: 0px;
+	line-height: 30px;
+	font-size: 14px;
+}
+#font1 {
+	font-size: 15px;
+	font-weight: bold;
+	font-family: 微软雅黑,Verdana, Geneva, sans-serif;
+}
+.BOTTOM {
+	height: 30px;
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #117000;
+	line-height: 30px;
+	color: #FFF;
+	text-align: center;
+}
+#FlashID {
+	float: right;
+	margin-right: 100px;
+}
+#rightz{
+	text-align:right;
+}
