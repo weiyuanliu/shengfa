@@ -54,14 +54,14 @@ end if
 if RecordCounts<>"" then
 	if Not IsNumeric(RecordCounts) then
 		response.Write("<script language=javascript>"&vbcrlf)
-			response.Write("alert('数据出错请返回！');"&vbcrlf)
+			response.Write("alert('数据出错请返回！1');"&vbcrlf)
 			response.Write("window.history.go(-1);"&vbcrlf)
 		response.Write("</script>")
 		response.End()
 	else
 		if Cint(RecordCounts)<=0 then
 			response.Write("<script language=javascript>"&vbcrlf)
-				response.Write("alert('数据出错请返回！');"&vbcrlf)
+				response.Write("alert('数据出错请返回！2');"&vbcrlf)
 				response.Write("window.history.go(-1);"&vbcrlf)
 			response.Write("</script>")
 			response.End()
@@ -69,27 +69,13 @@ if RecordCounts<>"" then
 	end if
 else
 	response.Write("<script language=javascript>"&vbcrlf)
-		response.Write("alert('数据出错请返回！');"&vbcrlf)
+		response.Write("alert('数据出错请返回！3');"&vbcrlf)
 		response.Write("window.history.go(-1);"&vbcrlf)
 	response.Write("</script>")
 	response.End()
 end if
 
-dim i,falg
-falg=false
-for i=1 to Cint(RecordCounts)
-	if(Trim(Request.Form("Numbers"&i)))<>"NULL" then
-		falg=true
-	end if
-next
 
-if not falg then
-	response.Write("<script language=javascript>"&vbcrlf)
-		response.Write("alert('数据出错，请返回！');"&vbcrlf)
-		response.Write("window.history.go(-1);"&vbcrlf)
-	response.Write("</script>")
-	response.End()
-end if
 %>
 
 <%
@@ -249,7 +235,7 @@ End Function
   <tr><td colspan='2' class="orderok_t">请仔细核对订单信息</td></tr>
     <TR>
 	  <TD width="30%" align=center>产品名称:</TD>
-	  <TD width="70%">汉方演绎<input type="hidden" name="ProdName" value="古那迪" /></TD>
+	  <TD width="70%">汉方演绎<input type="hidden" name="ProdName" value="汉方演绎" /></TD>
     </TR>
     <TR>
 	    <TD align=center>订购时间:</TD>
@@ -267,19 +253,11 @@ End Function
 	    <TD align=center>产品清单:</TD>
 	    <TD>
     	<%
-		dim j,str
-		for j=1 to Cint(RecordCounts)
-			if Trim(Request.Form("Numbers"&j)<>"NULL") then
-				response.Write(Trim(Request.Form("Numbers"&j)))
-				if str="" or isnull(str) then
-					str=Trim(Request.Form("Numbers"&j))
-				else
-					str=str&"|"&Trim(Request.Form("Numbers"&j))
-				end if
-				response.Write("套")
-				response.Write("&nbsp;&nbsp;")			
+		dim str
+			if Trim(Request.Form("Numbers")<>"NULL") then
+				str=Trim(Request.Form("Numbers"))
 			end if
-		next
+			response.Write str
 		%>
 	    <input type="hidden" name="Products" value="<%=str%>" /></TD>
     </TR>
@@ -337,7 +315,7 @@ function savedingdan()
 	sql="select top 1 * from NwebCn_Order"
 	rs.open sql,conn,1,3
 	rs.addnew()
-	rs("ProductName")="古那迪"
+	rs("ProductName")="汉方演绎"
 	rs("AddTime")=dgtime
 	rs("Linkman")=Sh_Name
 	rs("Address")= AddersStr&Addres
@@ -396,19 +374,19 @@ End sub
 		Str2=Split(str,"|")
 		Sum=0
 		for i=0 to ubound(Str2)
-			sql="select top 1 Price from NwebCn_Products where ProductName='"&Mid(str2(i),1,instr(str2(i),"(")-1)&"'"
+			sql="select top 1 Price from NwebCn_Products where ProductName='"&str2(i)&"'"
 			rs.open sql,conn,1,1
 			if rs.eof and rs.bof then
 				rs.close()
 				set rs=Nothing
 				response.Write("<script languge=javascript>")
-					response.Write("alert('数据出错，请返回！');")
+					response.Write("alert('数据出错，请返回！"&Mid(str2(i),1,instr(str2(i),"(")-1)&"');")
 					response.Write("window.history.go(-1);")
 				response.Write("</script>")
 				response.End()
 				exit function
 			else
-				Sum=Sum+(rs("Price")*Cint(Mid(str2(i),instr(Str2(i),"(")+1,1)))
+				Sum=Sum+(rs("Price"))
 			end if
 			rs.close()
 		next

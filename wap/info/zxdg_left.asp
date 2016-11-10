@@ -54,28 +54,24 @@ end function
 			response.Write("暂无产品信息，不能定购！")
 			response.Write("<input type='hidden' name='RecordCount' id='RecordCount' value='0'>")
 		else
-			dim i
-			i=1
-    		while not rs.eof 
+   		
 				response.Write("<label>")
-				response.Write("<strong>"&rs("ProductName")&"</strong>")
-
-				response.Write("&nbsp;<font color='#ff0000'>"&rs("Price")&rs("PriceText")&"</font>&nbsp;")
-
-					response.Write("<select name='Numbers"&i&"' size='1' id='Numbers"&i&"'>")
-						response.Write("<option value='NULL' selected>选择订购数量</option>")
-						response.Write("<option value='"&rs("ProductName")&"(0)'>0盒</option>")
-						response.Write("<option value='"&rs("ProductName")&"(1)'>1盒</option>")
-						response.Write("<option value='"&rs("ProductName")&"(2)'>2盒</option>")
-						response.Write("<option value='"&rs("ProductName")&"(3)'>3盒</option>")
-						response.Write("<option value='"&rs("ProductName")&"(4)'>4盒</option>")
-						response.Write("<option value='"&rs("ProductName")&"(5)'>5盒</option>")
+    
+                    response.Write("<strong>请选择订购数量：</strong>")
+					response.Write("<select name='Numbers' size='1' id='Numbers'>")
+						
+						while not rs.eof 
+						
+						response.Write("<option value='"&rs("ProductName")&"'>"&rs("ProductName")&" "&rs("Price")&rs("PriceText")&"</option>")
+						rs.movenext
+						wend
+						
 					response.Write("</select>")
 				response.Write("</label>")
 				response.Write("<br />")
-				rs.movenext
-				i=i+1
-			wend
+				
+				
+			
 			response.Write("<input type='hidden' name='RecordCount' id='RecordCount' value='"&rs.recordcount&"'>")
 		end if
 		rs.close()

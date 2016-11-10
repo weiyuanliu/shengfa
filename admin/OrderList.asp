@@ -383,10 +383,10 @@ end if
       if Instr(session("AdminPurview"),"|316,")<>0 then
 	  Response.Write "<td >"&rs("LinkName")&"</td>" & vbCrLf
 	  end if
-	  if StrLen(rs("Amount"))>50 then
-        Response.Write "<td title="&rs("Amount")&" >"&Replace(replace(Print(rs("Amount")),"倍洛加","(B)"),"二代0盒","")&"</td>" & vbCrLf
+	  if StrLen(rs("Amount"))>0 then
+        Response.Write "<td title="&rs("Amount")&" >"&rs("Amount")&"</td>" & vbCrLf
       else
-        Response.Write "<td title="&rs("Amount")&" >"&Replace(Replace(replace(Print(rs("Amount")),"倍洛加","(B)"),"一代0盒、",""),"、二代0盒","")&"</td>" & vbCrLf
+        Response.Write "<td title="&rs("Amount")&" >"&rs("Amount")&"</td>" & vbCrLf
       end if
 	  
 	  dim sms_states
